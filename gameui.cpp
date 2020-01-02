@@ -18,14 +18,14 @@ gameUi::~gameUi()
 
 void gameUi::on_pBtnPlay_clicked()
 {
-    //if play is clicked creating a game object
-//    hide();
+    //creating a new game on play button click
+    hide();
     myGame = new game();
     myGame->show();
 }
 
 void gameUi::on_pBtnQuit_clicked()
 {
-    //If quit is clicked closing the game
+    //quit
     close();
 }

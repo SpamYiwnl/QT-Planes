@@ -8,7 +8,7 @@ extern game *myGame;
 
 health::health(QGraphicsItem *parent):QGraphicsTextItem(parent){
 
-    //When a health object is created in the game setting its value,position and image
+    //setting position, value and image to health object
     Health = 3;
     setPlainText(QString("Health: ")+QString::number(Health));
     setDefaultTextColor(Qt::green);
@@ -19,11 +19,11 @@ health::health(QGraphicsItem *parent):QGraphicsTextItem(parent){
 
 void health::decreaseHealth()
 {
-    //Decreasing the health and setting the result in the scene
+    //showing and decreasing value of health
         Health--;
         setPlainText(QString("Health: ")+QString::number(Health));
 
-    //If player has run out of life,Stopping the game and displaying the game over ui
+    //displaying the game over ui and stopping the game if the players health is gone
         if(Health==0){
         myGame->closeAll();
         myGame->hide();
@@ -34,7 +34,7 @@ void health::decreaseHealth()
 
 void health::increaseHealth()
 {
-    //Increasing the health and setting the result in the scene
+    //showing and increasing value of health
         Health++;
         setPlainText(QString("Health: ")+QString::number(Health));
 }

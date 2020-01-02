@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    //Creating a game ui and showing  it to the user at start
+    //displaying the game ui to the player
     gameUi *gameui = new gameUi();
     gameui->show();
 

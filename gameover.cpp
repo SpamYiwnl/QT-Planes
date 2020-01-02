@@ -8,7 +8,7 @@ gameOver::gameOver(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::gameOver)
 {
-    //When the game is over getting its score and passing it to the label(Score) in the ui
+    //if player loses taking the score and passing it to the label(Score) in the ui
     ui->setupUi(this);
     Score = myGame->myScore->getScore();
     ui->score->setText(QString::number(Score));
@@ -21,8 +21,8 @@ gameOver::~gameOver()
 
 void gameOver::on_pBtnPlayAgain_clicked()
 {
-    //If play again is clicked clearing the scene and creating a new game object
-//    hide();
+    //after play again button is pressed creating a new game ui
+    hide();
     myGame->myScene->clear();
     myGame = new game();
     myGame->show();
@@ -30,6 +30,6 @@ void gameOver::on_pBtnPlayAgain_clicked()
 
 void gameOver::on_pBtnQuit_clicked()
 {
-    //If quit is clicked closing the game
+    //quit button
     close();
 }

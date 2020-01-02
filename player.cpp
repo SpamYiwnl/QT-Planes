@@ -9,28 +9,28 @@
 
 player::player(QGraphicsItem *parent):QGraphicsPixmapItem(parent)
 {
-    //when the player is created in the scene setting  its image and keeping a private QMediaPlayer to output the sounds of the bullet
+    //setting an image to the player and playing the sound of the bullet/ shooting sound
     bulletSound = new QMediaPlayer();
     bulletSound->setMedia(QUrl("qrc:/sounds/bullet.wav"));
     setPixmap(QPixmap(":/images/player.png"));
 }
 
-void player::keyPressEvent(QKeyEvent *myEvent) //Checking what key was pressed by the user
+void player::keyPressEvent(QKeyEvent *myEvent) //checking which key is pressed by the player
 {
-    //If the left key was clicked check if its possible for the user to move left and if possible move the user left
+    //checking if there is space to move and moving left if the left key is pressed
     if(myEvent->key() == Qt::Key_Left){
         if(pos().x()>0){
              setPos(x()-10,y());
              qDebug("test");
         }
     }
-    //If the right key was clicked check if its possible for the user to move right and if possible move the user right
+    //checking if there is space to move and moving right if the right key is pressed
     else if(myEvent->key() == Qt::Key_Right){
-        if(pos().x()+ 258 < 1200){
+        if(pos().x()+ 256< 1200){
             setPos(x()+10,y());
         }
     }
-    //If the spacebar was clicked creating a bullet object and add it to the scene
+    //creating and adding a bullet object if the spacebar is pressed
     else if(myEvent->key() == Qt::Key_Space){
 
         //Creating a bullet
@@ -38,7 +38,7 @@ void player::keyPressEvent(QKeyEvent *myEvent) //Checking what key was pressed b
         myBullet->setPos(x(),y());
         scene()->addItem(myBullet);
 
-        //Playing bullet sounds
+        //playing shooting sound
         if(bulletSound->state() == QMediaPlayer::PlayingState){
             bulletSound->setPosition(0);
         }else if (bulletSound->state() == QMediaPlayer::StoppedState){
@@ -50,7 +50,7 @@ void player::keyPressEvent(QKeyEvent *myEvent) //Checking what key was pressed b
 
 void player::spawn()
 {
-    //add enemies to the scene
+    //adding enemies
     enemy *myEnemy = new enemy();
     scene()->addItem(myEnemy);
 
@@ -58,7 +58,7 @@ void player::spawn()
 
 void player::spawnLife()
 {
-    //add life to the scene
+    //adding life
     addHealth *newLife = new addHealth();
     scene()->addItem(newLife);
 

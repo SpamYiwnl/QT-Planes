@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(240, 255, 164);</string>
+   <string notr="true">background-color: rgb(255, 255, 0);</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -118,6 +118,9 @@
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(249, 255, 175);</string>
+   </property>
    <property name="text">
     <string>Play Again</string>
    </property>
@@ -139,6 +142,9 @@
      <italic>true</italic>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(249, 255, 175);</string>
    </property>
    <property name="text">
     <string>Quit</string>

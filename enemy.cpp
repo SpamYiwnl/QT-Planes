@@ -10,12 +10,12 @@ extern game *myGame;
 
 enemy::enemy(QGraphicsItem *parent):QObject(),QGraphicsPixmapItem(parent){
 
-    //When an enemy object is created setting its position and image
+    //setting position and image
     int random_number = rand()%600;
     setPos(random_number,0);
     setPixmap(QPixmap(":/images/enemy.png"));
 
-    //after creating enemy object calling its moveEnemy() function using a timer to move it in the scene
+    //using a timer to work with the moveEnemy() function and to move it in the scene
     myTimer = new QTimer();
     connect(myTimer,SIGNAL(timeout()),this,SLOT(moveEnemy()));
     myTimer->start(50);
@@ -26,17 +26,17 @@ void enemy::moveEnemy()
 
     QList <QGraphicsItem *> colliding_items = collidingItems();
 
-    //Checking if an enemy is colliding with any object
+    //checking if an enemy collides with any object
     for(int i = 0,n = colliding_items.size(); i<n; ++i){
 
-        //Ifcolliding with player
+        //colliding with player
         if(typeid(*(colliding_items[i])) == typeid(player)){
 
-            //Decreasing health
+            //decreasing health
 
             myGame->myHealth->decreaseHealth();
 
-            //Removing enemy to free up memory
+            //removing enemy after being hit to free up and save memory
             scene()->removeItem(this);
             delete this;
             return;
@@ -48,7 +48,7 @@ void enemy::moveEnemy()
 
     setPos(x(),y()+7);
 
-    //If enemy moves out of the scene deleting it to save memory
+    //deleting the enemy after they go out of the scene to free up and save memory
     if(pos().y() > 900){
 
         //Reduce health
